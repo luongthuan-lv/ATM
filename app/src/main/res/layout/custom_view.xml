@@ -11,7 +11,7 @@
 
         <variable
             name="button"
-            type="com.luongthuan.atm.view.MainActivity.MyClick" />
+            type="com.luongthuan.atm.view.CustonView.MyClick" />
 
         <variable
             name="viewmodel"
@@ -55,7 +55,7 @@
                 android:ems="10"
                 android:afterTextChanged="@{(editable)->viewmodel.afterTextChanged(editable)}"
                 android:gravity="center"
-                android:hint="@{user.hint}"
+                android:hint="@string/hint"
                 android:inputType="number"
                 android:maxLength="10"
                 android:text="@{user.data}" />

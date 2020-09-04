@@ -16,16 +16,11 @@
         android:layout_height="fill_parent"
         tools:context=".view.MainActivity">
 
-        <include
+        <com.luongthuan.atm.view.CustonView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/data"
-            layout="@layout/custom_view"
-            user="@{user}" />
-<!--        <com.luongthuan.atm.view.CustonView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:id="@+id/data"-->
-<!--            user="@{user}"-->
-<!--            />-->
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
