@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ATM</string>
+    <string name="title">Số thẻ ATM người nhận</string>
+    <string name="hint">NHẬP SỐ THẺ ATM</string>
 </resources>
