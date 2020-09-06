@@ -16,7 +16,7 @@
         android:layout_height="fill_parent"
         tools:context=".view.MainActivity">
 
-        <com.luongthuan.atm.view.CustonView
+        <com.luongthuan.atm.view.CustomView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/data"

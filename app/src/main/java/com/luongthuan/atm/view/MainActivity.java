@@ -1,32 +1,38 @@
 package com.luongthuan.atm.view;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 
-import android.content.Context;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import com.luongthuan.atm.R;
-import com.luongthuan.atm.databinding.ActivityMainBinding;
-import com.luongthuan.atm.model.User;
-import com.luongthuan.atm.viewmodel.BankViewModel;
-
-import java.lang.ref.PhantomReference;
 
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-    private CustonView custonView;
+    public CustomView customView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        custonView=new CustonView(this);
+        customView = new CustomView(this);
 
     }
+//    public void openLanguageScreen() {
+//        Intent intent = new Intent(MainActivity.this, ChangeLanguageActivity.class);
+//        startActivityForResult(intent, Constants.RequestCode.CHANGE_LANGUAGE);
+//    }
 
-
-
-
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch (requestCode) {
+//            case Constants.RequestCode.CHANGE_LANGUAGE:
+//                if (resultCode == RESULT_OK) {
+//                    customView.myClick.updateViewByLanguage();
+//                }
+//                break;
+//        }
+//    }
 }

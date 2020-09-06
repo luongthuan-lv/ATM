@@ -11,7 +11,7 @@
 
         <variable
             name="button"
-            type="com.luongthuan.atm.view.CustonView.MyClick" />
+            type="com.luongthuan.atm.view.CustomView.MyClick" />
 
         <variable
             name="viewmodel"
@@ -38,6 +38,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -51,21 +52,22 @@
                 android:layout_height="40dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
+                android:afterTextChanged="@{(editable)->viewmodel.afterTextChanged(editable)}"
                 android:background="@android:color/transparent"
                 android:ems="10"
-                android:afterTextChanged="@{(editable)->viewmodel.afterTextChanged(editable)}"
                 android:gravity="center"
                 android:hint="@string/hint"
                 android:inputType="number"
                 android:maxLength="10"
                 android:text="@{user.data}" />
+
             <ImageView
-                android:visibility="@{viewmodel.visibility ? View.VISIBLE : View.INVISIBLE}"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_baseline_account"/>
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_baseline_account"
+                android:visibility="@{viewmodel.visibility ? View.VISIBLE : View.INVISIBLE}" />
 
             <Button
                 android:id="@+id/btnTest"
@@ -83,6 +85,17 @@
                 android:textColor="@color/colorWhite" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/textbtn"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
