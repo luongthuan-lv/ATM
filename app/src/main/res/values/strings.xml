@@ -6,7 +6,7 @@
     <string name="change_language_title">Ngôn ngữ</string>
 
     <string name="language_english" translatable="false">English</string>
-    <string name="language_vietnamese" translatable="false">Tiếng Việt</string>
+    <string name="language_vietnamese" translatable="false">Việt Nam</string>
     <string-array name="language_names">
         <item>@string/language_english</item>
         <item>@string/language_vietnamese</item>

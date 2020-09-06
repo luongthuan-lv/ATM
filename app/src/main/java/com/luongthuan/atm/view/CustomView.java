@@ -30,12 +30,16 @@ import com.luongthuan.atm.model.User;
 import com.luongthuan.atm.viewmodel.BankViewModel;
 import com.luongthuan.atm.viewmodel.LocaleHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomView extends ConstraintLayout {
     public LayoutInflater layoutInflater;
     public MyClick myClick;
     public CustomViewBinding binding;
     boolean lang_selected;
     Resources resources;
+    String data;
 
     public CustomView(final Context context) {
         super(context);
@@ -51,42 +55,41 @@ public class CustomView extends ConstraintLayout {
         binding.button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String[] Language = {"Việt Nam", "English"};
-                final int checkedItem;
-                if (lang_selected) {
-                    checkedItem = 0;
-                } else {
-                    checkedItem = 1;
-                }
-                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                final String[] Language = getResources().getStringArray(R.array.language_names);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Chọn ngôn ngữ")
-                        .setSingleChoiceItems(Language, checkedItem, new DialogInterface.OnClickListener() {
+                        .setSingleChoiceItems(R.array.language_names, -1, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                             //  Toast.makeText(context,i+"", Toast.LENGTH_SHORT).show();
+                                if (Language[i].equals("Việt Nam")) {
+                                    resources = LocaleHelper.setLocale(context, "vi").getResources();
+                                    binding.textView.setText(resources.getString(R.string.title));
+                                    binding.edtNumber.setHint(resources.getString(R.string.hint));
+                                    binding.button.setText(resources.getString(R.string.textbtn));
+                                    Toast.makeText(context, Language[i], Toast.LENGTH_SHORT).show();
 
-                               lang_selected=Language[i].equals("Việt Name");
-                               if (Language[i].equals("Việt Nam")){
-                                   resources = LocaleHelper.setLocale(context,"vi").getResources();
-                                   binding.textView.setText(resources.getString(R.string.title));
-                                   binding.edtNumber.setHint(resources.getString(R.string.hint));
-                                   binding.button.setText(resources.getString(R.string.textbtn));
-                               }
 
-                               if (Language[i].equals("English")){
-                                   resources = LocaleHelper.setLocale(context,"en").getResources();
-                                   binding.textView.setText(resources.getString(R.string.title));
-                                   binding.edtNumber.setHint(resources.getString(R.string.hint));
-                                   binding.button.setText(resources.getString(R.string.textbtn));
-                               }
-                            }
-                        })
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
+                                }
+
+                                if (Language[i].equals("English")) {
+                                    resources = LocaleHelper.setLocale(context, "en").getResources();
+                                    binding.textView.setText(resources.getString(R.string.title));
+                                    binding.edtNumber.setHint(resources.getString(R.string.hint));
+                                    binding.button.setText(resources.getString(R.string.textbtn));
+                                    Toast.makeText(context, Language[i], Toast.LENGTH_SHORT).show();
+
+                                }
                             }
                         });
+
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
                 builder.create().show();
             }
         });
