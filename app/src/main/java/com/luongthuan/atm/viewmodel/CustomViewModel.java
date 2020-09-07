@@ -10,7 +10,7 @@ public class CustomViewModel {
 
     private Context mContext;
 
-    CustomViewModel(Context context) {
+    public CustomViewModel(Context context) {
         mContext = context;
         initData();
     }
