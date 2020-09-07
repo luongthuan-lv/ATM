@@ -1,11 +1,8 @@
 package com.luongthuan.atm.view;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-
-import android.content.Intent;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.luongthuan.atm.R;
 import com.luongthuan.atm.databinding.ActivityMainBinding;
@@ -18,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         CustomViewModel customViewModel = new CustomViewModel(this);
         mainBinding.setViewModel(customViewModel);
     }
